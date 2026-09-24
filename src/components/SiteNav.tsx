@@ -1,56 +1,39 @@
 "use client";
 
 import { useState } from "react";
-import { MenuIcon } from "lucide-react";
+import { ArrowRightIcon, MenuIcon } from "lucide-react";
 import { Logo } from "@/components/logo";
-import { ModeToggle } from "@/components/mode-toggle";
+import { Container } from "@/components/panel";
 import { Button } from "@/components/ui/button";
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu";
-import { Separator } from "@/components/ui/separator";
 import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { cta, nav, site } from "@/content/site";
-
-function Wordmark() {
-  return (
-    <a href="#top" aria-label={site.name}>
-      <Logo />
-    </a>
-  );
-}
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-4 sm:px-6">
-        <Wordmark />
+    <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur-md">
+      <Container className="flex h-16 items-center justify-between gap-6">
+        <a href="#top" aria-label={site.name}>
+          <Logo />
+        </a>
 
-        <NavigationMenu className="hidden lg:flex" aria-label="Primary">
-          <NavigationMenuList>
-            {nav.links.map((link) => (
-              <NavigationMenuItem key={link.href}>
-                <NavigationMenuLink href={link.href} className="px-3 font-mono text-xs tracking-widest text-muted-foreground uppercase hover:text-foreground">
-                  {link.label}
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-        </NavigationMenu>
+        <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
+          {nav.links.map((link) => (
+            <a key={link.href} href={link.href} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+              {link.label}
+            </a>
+          ))}
+        </nav>
 
         <div className="flex items-center gap-2">
-          <ModeToggle />
-          <Button render={<a href="#contact" />} nativeButton={false} className="hidden lg:inline-flex">
-            {cta.contact}
+          <Button render={<a href="#contact" />} nativeButton={false} className="hidden h-9 px-4 md:inline-flex">
+            {cta.letsBuild}
+            <ArrowRightIcon data-icon="inline-end" />
           </Button>
 
           <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger render={<Button variant="outline" size="icon" aria-label={nav.openMenu} className="lg:hidden" />}>
+            <SheetTrigger render={<Button variant="outline" size="icon-lg" aria-label={nav.openMenu} className="md:hidden" />}>
               <MenuIcon />
             </SheetTrigger>
             <SheetContent side="right">
@@ -73,15 +56,15 @@ export function SiteNav() {
                 ))}
               </nav>
               <SheetFooter>
-                <Separator />
-                <Button size="lg" render={<a href="#contact" />} nativeButton={false} onClick={() => setOpen(false)}>
-                  {cta.contact}
+                <Button size="cta" render={<a href="#contact" />} nativeButton={false} onClick={() => setOpen(false)}>
+                  {cta.letsBuild}
+                  <ArrowRightIcon data-icon="inline-end" />
                 </Button>
               </SheetFooter>
             </SheetContent>
           </Sheet>
         </div>
-      </div>
+      </Container>
     </header>
   );
 }

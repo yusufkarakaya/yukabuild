@@ -2,10 +2,9 @@ import type { CSSProperties, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * Scroll entry. A plain element with a class: the animation lives in CSS and is
- * gated behind `prefers-reduced-motion: no-preference` and `@supports
- * (animation-timeline: view())`, so the content is visible with no script and
- * no animation support.
+ * Scroll entry. The animation lives in CSS and is gated behind
+ * `prefers-reduced-motion: no-preference` and `@supports (animation-timeline:
+ * view())`, so the content is visible with no script and no animation support.
  */
 export function Reveal({ children, className }: { children: ReactNode; className?: string }) {
   return <div className={cn("reveal", className)}>{children}</div>;

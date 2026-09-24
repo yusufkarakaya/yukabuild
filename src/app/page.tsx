@@ -1,12 +1,11 @@
-import { Contact } from "@/components/Contact";
-import { Founder } from "@/components/Founder";
+import { ClientWork } from "@/components/ClientWork";
+import { FinalCta } from "@/components/FinalCta";
 import { Hero } from "@/components/Hero";
-import { ProcessTrack } from "@/components/ProcessTrack";
+import { SelectedProducts } from "@/components/SelectedProducts";
 import { Services } from "@/components/Services";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNav } from "@/components/SiteNav";
-import { WorkBento } from "@/components/WorkBento";
-import { Separator } from "@/components/ui/separator";
+import { Stack } from "@/components/Stack";
 
 export default function HomePage() {
   return (
@@ -14,16 +13,11 @@ export default function HomePage() {
       <SiteNav />
       <main>
         <Hero />
-        <Separator />
+        <SelectedProducts />
         <Services />
-        <Separator />
-        <ProcessTrack />
-        <Separator />
-        <WorkBento />
-        <Separator />
-        <Founder />
-        <Separator />
-        <Contact />
+        <ClientWork />
+        <Stack />
+        <FinalCta />
       </main>
       <SiteFooter />
     </>

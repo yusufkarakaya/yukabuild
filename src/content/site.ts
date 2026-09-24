@@ -8,99 +8,43 @@
  */
 
 export const site = {
-  /** The one-line brand promise. Footer and about panel. */
-  tagline: "Built end to end.",
-  name: "yukabuild",
-  /** PLACEHOLDER: no domain is registered yet. */
+  name: "YukaBuild",
   url: "https://yukabuild.com",
   founder: "Yusuf Karakaya",
-  /** PLACEHOLDER: swap for a dedicated studio inbox. */
   email: "hello@yukabuild.com",
+  title: "Software products, built from idea to production",
   description:
-    "yukabuild is the one-person studio of Yusuf Karakaya, building mobile apps, SaaS platforms, web projects and CMS work, and shipping its own products.",
+    "YukaBuild is the studio of Yusuf Karakaya: full-stack development, mobile apps and SaaS products, built from idea to production.",
 } as const;
 
 /**
- * One label per intent, reused verbatim in the nav, the hero, the work grid
- * and the footer. Two different labels for the same action reads as two
- * different actions.
+ * One label per intent, reused verbatim wherever the action appears. Two
+ * different labels for the same action reads as two different actions.
  */
 export const cta = {
-  contact: "Start a project",
-  work: "See the work",
+  viewWork: "View Work",
+  startProject: "Start a Project",
+  letsBuild: "Let's Build",
 } as const;
 
 export const nav = {
   openMenu: "Open menu",
   menuTitle: "Menu",
   links: [
-    { label: "Services", href: "#services" },
-    { label: "Process", href: "#process" },
     { label: "Work", href: "#work" },
+    { label: "Products", href: "#products" },
+    { label: "Services", href: "#services" },
     { label: "About", href: "#about" },
   ],
 } as const;
 
 export const hero = {
-  /** Short line above the headline. */
-  eyebrow: "Taking on new projects",
-  headline: "I build apps, SaaS and websites.",
-  /** 19 words. The cap is 20. */
-  subtext:
-    "yukabuild is a one-person studio. I take your product from first sketch to launch, then keep it running.",
-  /**
-   * The terminal panel next to the headline. Not a real command: it is the
-   * process below, told the way a build log would tell it.
-   */
-  terminal: {
-    title: "~/yukabuild",
-    command: 'yukabuild new "your product"',
-    lines: [
-      { label: "scope", value: "written, priced, approved" },
-      { label: "design", value: "real screens, before code" },
-      { label: "build", value: "a working slice every week" },
-      { label: "ship", value: "live, and kept running" },
-    ],
-    status: "Ready when you are",
-  },
-  stackLabel: "Stack",
+  headline: "Software products, built from idea to production.",
+  subline: "Full-stack development, mobile apps and SaaS products.",
+  /** The one Blender object on the site. Exported from Blender as GLB. */
+  model: "/models/yukabuild.glb",
+  modelLabel: "YukaBuild 3D mark",
 } as const;
-
-/**
- * Mono labels above each section heading, numbered in page order. The number
- * is decoration, the label is what a screen reader hears.
- */
-export const sections = {
-  services: { index: "01", label: "Services" },
-  process: { index: "02", label: "Process" },
-  work: { index: "03", label: "Products" },
-  about: { index: "04", label: "Studio" },
-  contact: { index: "05", label: "Contact" },
-} as const;
-
-export const theme = {
-  toggle: "Toggle theme",
-  options: [
-    { value: "light", label: "Light" },
-    { value: "dark", label: "Dark" },
-    { value: "system", label: "System" },
-  ],
-} as const;
-
-/**
- * The chips under the hero terminal. Only tools the services below already
- * name. Edit to match the real stack.
- */
-export const stack = [
-  "React Native",
-  "iOS",
-  "Android",
-  "Next.js",
-  "TypeScript",
-  "Postgres",
-  "Auth and billing",
-  "Headless CMS",
-] as const;
 
 /** Real URLs from the shipped project. Do not invent replacements for these. */
 export const oneSudoku = {
@@ -109,28 +53,33 @@ export const oneSudoku = {
   playStore: "https://play.google.com/store/apps/details?id=co.onesudoku.game",
 } as const;
 
-export type Project = {
+export type Product = {
   id: string;
   name: string;
   summary: string;
-  tags: readonly string[];
-  /** Square app icon. Omitted until the product has one. */
+  meta: readonly { label: string; value: string }[];
   logo?: { src: string; alt: string };
-  /** A phone screenshot, shown cropped inside the product panel. */
+  /** A phone screenshot, shown inside a plain device frame. */
   media?: { src: string; width: number; height: number; alt: string };
   links: readonly { label: string; href: string }[];
 };
 
-export const work = {
-  headline: "Products the studio ships itself.",
-  intro: "Between client projects I build and run my own apps. They are where new tools get tested before they go near yours.",
+export const products = {
+  eyebrow: "Selected Products",
+  headline: "Products we ship ourselves.",
+  description: "Our own apps, built and run end to end. The same process goes into client work.",
   inBuild: "In build",
-  projects: [
+  items: [
     {
       id: "one-sudoku",
       name: "One Sudoku",
       summary: "A free sudoku game for iPhone, iPad and Android, with a daily challenge and offline play.",
-      tags: ["React Native", "iOS", "Android"],
+      meta: [
+        { label: "Platform", value: "iOS · Android" },
+        { label: "Stack", value: "React Native · Expo" },
+        /** PLACEHOLDER: confirm the launch year. */
+        { label: "Year", value: "2026" },
+      ],
       logo: { src: "/one-sudoku-logo.png", alt: "One Sudoku app icon" },
       media: {
         src: "/one-sudoku-home.webp",
@@ -146,169 +95,81 @@ export const work = {
     },
     {
       id: "next-product",
-      /** PLACEHOLDER: real name, icon and links go here when it ships. */
+      /** PLACEHOLDER: real name, screenshot and links go here when it ships. */
       name: "Next product",
-      summary: "The second yukabuild app is in build. It lands here when it ships.",
-      tags: ["In build"],
+      summary: "The second YukaBuild product is in build. It lands here when it ships.",
+      meta: [],
       links: [],
     },
   ],
 } as const satisfies {
+  eyebrow: string;
   headline: string;
-  intro: string;
+  description: string;
   inBuild: string;
-  projects: readonly Project[];
+  items: readonly Product[];
 };
 
-export const services = {
-  headline: "What I build for clients.",
-  intro:
-    "Four things, done end to end. I write the code, ship the release and stay on for whatever breaks.",
+export const build = {
+  eyebrow: "What I Build",
+  headline: "Products, not tech stacks.",
   items: [
     {
-      id: "mobile",
-      icon: "mobile",
-      title: "Mobile apps",
-      body: "iOS and Android from one React Native codebase. I handle the build, the store listings and the review process, through to a live release.",
-      points: ["React Native", "App Store and Play Store", "Offline first"],
-    },
-    {
-      id: "saas",
-      icon: "saas",
-      title: "SaaS platforms",
-      body: "Full stack product builds. Accounts, billing, dashboard and API, put together as something you can actually charge for rather than a demo.",
-      points: ["Next.js", "Postgres", "Auth and billing"],
-    },
-    {
       id: "web",
-      icon: "web",
-      title: "Web projects",
-      body: "Marketing sites, landing pages and product sites that load fast, read well on a phone and give search engines something to work with.",
-      points: ["Next.js", "SEO groundwork", "Analytics"],
+      title: "Web Products",
+      body: "SaaS platforms, dashboards and product sites. Accounts, billing and the admin side included, built to be charged for rather than demoed.",
     },
     {
-      id: "cms",
-      icon: "cms",
-      title: "CMS setup",
-      body: "Content your team edits without opening a pull request. Schema, editor and preview, then I hand you the keys.",
-      points: ["Headless CMS", "Editor training", "Preview builds"],
+      id: "mobile",
+      title: "Mobile Apps",
+      body: "iOS and Android apps from one codebase, taken through store review to a live release, and kept running after launch.",
+    },
+    {
+      id: "engineering",
+      title: "Product Engineering",
+      body: "Joining an existing product to ship features, fix what slows the team down and get a release out the door.",
     },
   ],
 } as const;
 
-/**
- * Verb first. No "Stage 1 / Step 2" prefixes: the content is the label.
- */
-export const process = {
-  headline: "How a project actually runs.",
-  steps: [
-    {
-      id: "scope",
-      title: "Scope the work",
-      body: "A call, then a written scope with what is in, what is out and what it costs. You approve it before anything starts.",
-    },
-    {
-      id: "design",
-      title: "Design the screens",
-      body: "Real screens, not a mood board. You see the product before I write the code that builds it.",
-    },
-    {
-      id: "build",
-      title: "Build in weekly slices",
-      body: "Every week ends with something you can open and use. No silence for a month followed by a surprise.",
-    },
-    {
-      id: "ship",
-      title: "Ship and keep it running",
-      body: "Store submission, launch, and a support window after it goes live. Shipping is the start of the job, not the end.",
-    },
+export type ClientProject = {
+  id: string;
+  client: string;
+  kind: string;
+  summary: string;
+  href?: string;
+};
+
+/** PLACEHOLDER: every entry except the RooneyPartners name needs real details. */
+export const clientWork = {
+  eyebrow: "Selected Client Work",
+  headline: "Built for clients.",
+  items: [
+    { id: "rooney", client: "RooneyPartners", kind: "Website", summary: "PLACEHOLDER: one line about the project." },
+    { id: "webflow", client: "Client name", kind: "Webflow", summary: "PLACEHOLDER: one line about the project." },
+    { id: "wordpress", client: "Client name", kind: "WordPress", summary: "PLACEHOLDER: one line about the project." },
+    { id: "ecommerce", client: "Client name", kind: "E-commerce", summary: "PLACEHOLDER: one line about the project." },
+    { id: "saas", client: "Client name", kind: "SaaS", summary: "PLACEHOLDER: one line about the project." },
+    { id: "mobile", client: "Client name", kind: "Mobile app", summary: "PLACEHOLDER: one line about the project." },
   ],
+} as const satisfies { eyebrow: string; headline: string; items: readonly ClientProject[] };
+
+export const stack = {
+  label: "Capabilities",
+  items: ["React", "Next.js", "React Native", "Node.js", "TypeScript", "PostgreSQL", "Firebase", "Cloudflare"],
 } as const;
 
-export const about = {
-  headline: "One person, start to finish.",
-  body: [
-    "I am Yusuf Karakaya. yukabuild is my studio, and it is just me. The person you talk to on the first call is the person writing the code and pushing the release.",
-    "That keeps things short. No account manager relaying questions, no team to spin up before work starts. It also means I take on a small number of projects at a time, so the one I am on gets real attention.",
-    "Between client projects I build small products of my own. That is where I try new tools before I use them on yours.",
-  ],
-  media: {
-    /** PLACEHOLDER: swap for a real photo of Yusuf or the workspace. */
-    src: "https://picsum.photos/seed/yukabuild-founder-desk/1000/1250",
-    width: 1000,
-    height: 1250,
-    alt: "Placeholder portrait standing in for a photo of Yusuf Karakaya at work.",
-  },
+export const finalCta = {
+  headline: "Have something to build?",
+  about:
+    "YukaBuild is the studio of Yusuf Karakaya. The person you talk to on the first call is the person writing the code and shipping the release.",
 } as const;
 
-/**
- * PLACEHOLDER hrefs. The accounts do not exist yet, so every link points at "#"
- * until they do.
- *
- * `icon` names a Phosphor brand glyph rather than a CDN slug. Simple Icons
- * dropped its LinkedIn mark and now returns 404 for it, and one icon family
- * with no network dependency beats a logo that silently disappears.
- */
+/** PLACEHOLDER hrefs. The accounts do not exist yet. */
 export const social = {
-  /** Shown inside the contact section, not as its own section. */
-  label: "Or follow the build",
   links: [
-    { label: "X", icon: "x", href: "#" },
-    { label: "GitHub", icon: "github", href: "#" },
-    { label: "LinkedIn", icon: "linkedin", href: "#" },
-    { label: "Instagram", icon: "instagram", href: "#" },
-  ],
-} as const;
-
-export const contact = {
-  headline: "Tell me what you want to build.",
-  /** Mono title on the form panel. */
-  formTitle: "new project",
-  body: "Send a few lines about the project. I reply to everything within two working days.",
-  fields: {
-    name: { label: "Your name", placeholder: "Yusuf Karakaya" },
-    email: { label: "Email", placeholder: "you@company.com" },
-    kind: { label: "What do you need?" },
-    message: {
-      label: "About the project",
-      placeholder: "What are you building, who is it for, and when do you need it live?",
-      hint: "A rough idea is enough to start.",
-    },
-  },
-  kinds: [
-    { value: "mobile", label: "A mobile app" },
-    { value: "saas", label: "A SaaS product" },
-    { value: "web", label: "A website" },
-    { value: "cms", label: "A CMS setup" },
-    { value: "other", label: "Something else" },
-  ],
-  submit: "Send it",
-  submitting: "Sending",
-  success: {
-    title: "Got it.",
-    body: "Your message is in. I will reply within two working days.",
-    again: "Send another",
-  },
-  errors: {
-    name: "Add your name so I know who I am replying to.",
-    email: "Add an email address I can reach you at.",
-    emailFormat: "That email address does not look right.",
-    message: "Tell me a little about the project.",
-    network: "That did not send. Email me directly at",
-  },
-} as const;
-
-export const footer = {
-  blurb: "A one-person studio building mobile apps, SaaS platforms, web projects and CMS work.",
-  columns: [
-    {
-      title: "Studio",
-      links: [
-        { label: "Services", href: "#services" },
-        { label: "Process", href: "#process" },
-        { label: "Work", href: "#work" },
-        { label: "About", href: "#about" },
-      ],
-    },
+    { label: "X", href: "#" },
+    { label: "GitHub", href: "#" },
+    { label: "LinkedIn", href: "#" },
   ],
 } as const;
