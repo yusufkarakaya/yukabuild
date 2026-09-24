@@ -31,7 +31,6 @@ export const nav = {
   openMenu: "Open menu",
   menuTitle: "Menu",
   links: [
-    { label: "Work", href: "#work" },
     { label: "Products", href: "#products" },
     { label: "Services", href: "#services" },
     { label: "About", href: "#about" },
@@ -131,28 +130,6 @@ export const build = {
     },
   ],
 } as const;
-
-export type ClientProject = {
-  id: string;
-  client: string;
-  kind: string;
-  summary: string;
-  href?: string;
-};
-
-/** PLACEHOLDER: every entry except the RooneyPartners name needs real details. */
-export const clientWork = {
-  eyebrow: "Selected Client Work",
-  headline: "Built for clients.",
-  items: [
-    { id: "rooney", client: "RooneyPartners", kind: "Website", summary: "PLACEHOLDER: one line about the project." },
-    { id: "webflow", client: "Client name", kind: "Webflow", summary: "PLACEHOLDER: one line about the project." },
-    { id: "wordpress", client: "Client name", kind: "WordPress", summary: "PLACEHOLDER: one line about the project." },
-    { id: "ecommerce", client: "Client name", kind: "E-commerce", summary: "PLACEHOLDER: one line about the project." },
-    { id: "saas", client: "Client name", kind: "SaaS", summary: "PLACEHOLDER: one line about the project." },
-    { id: "mobile", client: "Client name", kind: "Mobile app", summary: "PLACEHOLDER: one line about the project." },
-  ],
-} as const satisfies { eyebrow: string; headline: string; items: readonly ClientProject[] };
 
 export const stack = {
   label: "Capabilities",

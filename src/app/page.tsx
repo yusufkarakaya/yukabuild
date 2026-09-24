@@ -1,4 +1,3 @@
-import { ClientWork } from "@/components/ClientWork";
 import { FinalCta } from "@/components/FinalCta";
 import { Hero } from "@/components/Hero";
 import { SelectedProducts } from "@/components/SelectedProducts";
@@ -15,7 +14,6 @@ export default function HomePage() {
         <Hero />
         <SelectedProducts />
         <Services />
-        <ClientWork />
         <Stack />
         <FinalCta />
       </main>
