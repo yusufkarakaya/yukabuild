@@ -232,6 +232,42 @@ export const finalCta = {
     "YukaBuild is the studio of Yusuf Karakaya. The person you talk to on the first call is the person writing the code and shipping the release.",
 } as const;
 
+/**
+ * The dialog behind every "Start a Project" button. Submissions go to
+ * FormSubmit, which forwards them to `site.email`.
+ */
+export const projectForm = {
+  eyebrow: "Start a Project",
+  title: "Tell me what you're building.",
+  description: "A few lines is enough. I read every message myself and reply with a straight answer on what it takes.",
+  fields: {
+    name: { label: "Name", placeholder: "Your name" },
+    email: { label: "Email", placeholder: "you@company.com" },
+    kind: { label: "What is it?", options: ["Web app", "Mobile app", "SaaS", "Something else"] },
+    /** PLACEHOLDER: confirm the ranges match what you quote. */
+    budget: { label: "Budget", options: ["Under $5k", "$5k–15k", "$15k–40k", "$40k+", "Not sure yet"] },
+    message: {
+      label: "The project",
+      placeholder: "The problem, who has it, and anything that already exists.",
+    },
+  },
+  optional: "Optional",
+  errors: {
+    name: "Add your name.",
+    email: "Add an email I can reply to.",
+    message: "Add a line or two about the project.",
+    send: "The message didn't go through. Try again, or email me at",
+  },
+  emailLabel: "Or email",
+  submit: "Send",
+  sending: "Sending",
+  success: {
+    title: "Message sent.",
+    body: "Thanks. I'll read it and reply to you by email.",
+    close: "Close",
+  },
+} as const;
+
 /** PLACEHOLDER hrefs. The accounts do not exist yet. */
 export const footer = {
   tagline: "Software products, from idea to production.",

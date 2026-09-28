@@ -25,13 +25,14 @@ site. The design tokens are in **`src/app/globals.css`**.
 | `src/content/site.ts` → `social.links` | Every `href` is `"#"` until the accounts exist. |
 | `src/content/site.ts` → `work.projects[1]` | The second product: real name, screenshots, store links. |
 | `src/content/site.ts` → `about.media` | A real photo of you or the workspace. |
-| `.env.local` → `NEXT_PUBLIC_FORM_ENDPOINT` | A Formspree or Web3Forms endpoint. See `.env.example`. |
 
 One image is a seeded `picsum.photos` placeholder (`yukabuild-founder-desk`). The One Sudoku screenshot, logo and store links are real.
 
-Without `NEXT_PUBLIC_FORM_ENDPOINT` the contact form shows its error state and
-points at `site.email`. That is deliberate: a missing key fails visibly rather
-than looking like it sent.
+The "Start a Project" form posts to [FormSubmit](https://formsubmit.co) at
+`site.email`; there is no account or key. The first submission sends that inbox
+an activation email, and until it is confirmed the form shows its error state
+with the email address rather than looking like it sent. Changing `site.email`
+means activating the new inbox the same way.
 
 ## Measured
 

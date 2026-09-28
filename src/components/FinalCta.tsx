@@ -1,9 +1,8 @@
 import Image from "next/image";
-import { ArrowRightIcon } from "lucide-react";
 import { Container } from "@/components/panel";
 import { Reveal } from "@/components/reveal";
-import { Button } from "@/components/ui/button";
-import { cta, finalCta, images, site } from "@/content/site";
+import { StartProject } from "@/components/StartProject";
+import { finalCta, images, site } from "@/content/site";
 
 /**
  * The close, and the one dark block on the page: a navy card with the question,
@@ -41,10 +40,7 @@ export function FinalCta() {
             </h2>
             <p className="max-w-[44ch] text-lg leading-relaxed text-white/75">{finalCta.subline}</p>
             <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
-              <Button size="cta" className="h-14 px-8 text-base" render={<a href={`mailto:${site.email}`} />} nativeButton={false}>
-                {cta.startProject}
-                <ArrowRightIcon data-icon="inline-end" />
-              </Button>
+              <StartProject className="h-14 px-8 text-base" />
               <p className="text-white/60">
                 {finalCta.emailLabel}{" "}
                 <a

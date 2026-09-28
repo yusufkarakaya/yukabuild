@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { ArrowRightIcon, ArrowUpRightIcon } from "lucide-react";
+import { ArrowUpRightIcon } from "lucide-react";
 import { Container, Surface } from "@/components/panel";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
-import { Button } from "@/components/ui/button";
-import { cta, products, site, type Product } from "@/content/site";
+import { StartProject } from "@/components/StartProject";
+import { products, type Product } from "@/content/site";
 
 /** A shipped product: large screenshot on one side, the facts on the other. */
 function CaseStudy({ product }: { product: Product }) {
@@ -91,10 +91,7 @@ function BuildTogether() {
         <h3 className="text-3xl font-semibold tracking-[-0.03em] lg:text-4xl">{products.cta.headline}</h3>
         <p className="max-w-[48ch] text-lg leading-relaxed text-muted-foreground">{products.cta.subline}</p>
       </div>
-      <Button size="cta" className="self-start sm:self-auto" render={<a href={`mailto:${site.email}`} />} nativeButton={false}>
-        {cta.startProject}
-        <ArrowRightIcon data-icon="inline-end" />
-      </Button>
+      <StartProject className="self-start sm:self-auto" />
     </Surface>
   );
 }

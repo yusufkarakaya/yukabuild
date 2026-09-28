@@ -1,9 +1,10 @@
-import { ArrowRightIcon, CheckIcon } from "lucide-react";
+import { CheckIcon } from "lucide-react";
 import { HeroVisual } from "@/components/HeroVisual";
 import { Container } from "@/components/panel";
 import { Rise } from "@/components/reveal";
+import { StartProject } from "@/components/StartProject";
 import { Button } from "@/components/ui/button";
-import { cta, hero, site } from "@/content/site";
+import { cta, hero } from "@/content/site";
 
 /** Headline, one orange call to action and the facts on the left; the photo on the right. */
 export function Hero() {
@@ -30,10 +31,7 @@ export function Hero() {
             <p className="max-w-[48ch] text-lg leading-relaxed text-muted-foreground sm:text-xl">{hero.subline}</p>
           </Rise>
           <Rise step={3} className="flex flex-col gap-3 sm:flex-row">
-            <Button size="cta" render={<a href={`mailto:${site.email}`} />} nativeButton={false}>
-              {cta.startProject}
-              <ArrowRightIcon data-icon="inline-end" />
-            </Button>
+            <StartProject />
             <Button size="cta" variant="outline" render={<a href="#products" />} nativeButton={false}>
               {cta.viewWork}
             </Button>
