@@ -27,14 +27,13 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a0a",
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    // Dark only. The `dark` class keeps the shadcn primitives on their dark variants.
-    // Geist Sans carries the page, Geist Mono the eyebrows and the stack row.
-    <html lang="en" className={`dark ${GeistSans.variable} ${GeistMono.variable}`}>
+    // Light only. Geist Sans carries the page, Geist Mono the eyebrows and the stack row.
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body>{children}</body>
     </html>
   );

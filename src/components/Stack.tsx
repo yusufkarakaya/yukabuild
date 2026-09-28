@@ -9,9 +9,9 @@ export function Stack() {
   const row = (hidden: boolean) => (
     <ul aria-hidden={hidden || undefined} className="flex shrink-0 items-center gap-10 pr-10">
       {stack.items.map((item) => (
-        <li key={item} className="flex items-center gap-10 font-mono text-sm whitespace-nowrap text-muted-foreground">
+        <li key={item} className="flex items-center gap-10 font-mono text-[15px] font-medium whitespace-nowrap">
           {item}
-          <span aria-hidden>·</span>
+          <span aria-hidden className="size-1.5 rounded-full bg-blue" />
         </li>
       ))}
     </ul>
@@ -20,7 +20,7 @@ export function Stack() {
   return (
     <section
       aria-label={stack.label}
-      className="marquee overflow-hidden border-y border-border py-8 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]"
+      className="marquee overflow-hidden py-10 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]"
     >
       <div className="marquee-track flex w-max">
         {row(false)}

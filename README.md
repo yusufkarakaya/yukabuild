@@ -45,12 +45,12 @@ lucide icons). Components live in `src/components/ui/` and are added with
 `pnpm dlx shadcn@latest add <name>`. Do not hand-edit them for one-off styling.
 
 - **Semantic tokens only.** `bg-background`, `text-muted-foreground`, `bg-primary`
-  and friends, defined in `globals.css` for `:root` and `.dark`. No raw colours.
-- **One brand colour.** "Build orange" is `--primary`, darker in light mode for
-  contrast. It is the cursor at the end of the logo; nothing else competes with it.
-  Everything else is a warm near-black / off-white neutral scale.
-- **Dark first.** `next-themes` defaults to dark; light and system stay in the
-  toggle in the nav.
+  and friends, defined once in `globals.css` on `:root`, plus `navy` and `blue`.
+- **Four colours, no more.** White ground, navy type, blue for signals (eyebrows,
+  diagrams, icons, links, focus) and orange (`--primary`) for calls to action and
+  the logo cursor. Muted text and borders are navy at low opacity, never a new hue.
+- **Light only.** White background from top to bottom; the closing card is the
+  one navy block. Photos are from Unsplash, stored in `public/images`.
 - **Base UI composition.** Links styled as buttons use
   `<Button render={<a href="..." />} nativeButton={false}>`, not `asChild`.
 - **Two typefaces, one family.** Geist Sans for the page, Geist Mono for labels,

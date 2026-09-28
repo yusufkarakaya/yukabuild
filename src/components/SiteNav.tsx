@@ -12,7 +12,7 @@ export function SiteNav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between gap-6">
         <a href="#top" aria-label={site.name}>
           <Logo />
@@ -20,7 +20,7 @@ export function SiteNav() {
 
         <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
           {nav.links.map((link) => (
-            <a key={link.href} href={link.href} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+            <a key={link.href} href={link.href} className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
               {link.label}
             </a>
           ))}
