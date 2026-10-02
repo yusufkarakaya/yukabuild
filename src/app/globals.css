@@ -10,7 +10,7 @@
      white   #ffffff  every background
      navy    #0b1f3a  type, the one dark block (the closing card)
      blue    #2f6bff  signals: eyebrows, diagrams, icons, links, focus
-     orange  #e15d2d  calls to action only, plus the logo's "ka" and period
+     orange  #e15d2d  calls to action only, plus the logo's "yuka" and period
 
    Muted text, borders and pale surfaces are navy or blue at low opacity,
    never a fifth hue. The site is light only.
@@ -56,6 +56,7 @@
 @theme inline {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-sans);
+  --font-logo: var(--font-fraunces), Georgia, serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --color-background: var(--background);

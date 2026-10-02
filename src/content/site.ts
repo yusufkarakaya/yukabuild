@@ -12,9 +12,9 @@ export const site = {
   url: "https://yukabuild.com",
   founder: "Yusuf Karakaya",
   email: "hello@yukabuild.com",
-  title: "Software products, built from idea to production",
+  title: "Web apps, mobile apps and SaaS, built and shipped by one developer",
   description:
-    "YukaBuild is the studio of Yusuf Karakaya: full-stack development, mobile apps and SaaS products, built from idea to production.",
+    "YukaBuild is Yusuf Karakaya's one-person studio. I build web apps, mobile apps and SaaS products, ship them, and keep them running after launch.",
 } as const;
 
 /**
@@ -41,10 +41,10 @@ export const nav = {
 export const hero = {
   status: "Taking on new projects",
   /** The headline is split so the middle phrase can carry the blue accent. */
-  headline: { lead: "Software products, built from", accent: "idea to production." },
+  headline: { lead: "I build apps and get them", accent: "into people's hands." },
   subline:
-    "I design, build and ship web apps, mobile apps and SaaS products, then keep them running after launch. One person, from the first call to the live release.",
-  facts: ["Web · iOS · Android", "Weekly builds you can click", "You own the code"],
+    "Web apps, iOS and Android apps, SaaS. I design them, write the code, push them through launch and stay on after. You deal with one person the whole way, from the first call to the day it goes live.",
+  facts: ["Web · iOS · Android", "A new build to click every week", "The code is yours"],
   /** The small floating cards on the hero photo. */
   cards: {
     build: { label: "Build #42", value: "Deployed to production" },
@@ -109,20 +109,20 @@ export type Product = {
 
 export const products = {
   eyebrow: "Selected Products",
-  headline: "Products we ship ourselves.",
+  headline: "Apps I've shipped myself.",
   description:
-    "Our own apps, designed, built, released and run end to end. The process that ships them is the one your project gets.",
+    "I design, build, release and run my own apps too. Your project goes through the same process that got One Sudoku into the App Store and Google Play.",
   inBuild: "In build",
   /** The invitation under the list: the next row could be the visitor's product. */
   cta: {
-    headline: "Let's build together.",
-    subline: "What's on your mind? Reach out and tell me about it. The next product on this list could be yours.",
+    headline: "Got an idea that won't leave you alone?",
+    subline: "Send me a few lines about it. The next app on this list could be yours.",
   },
   items: [
     {
       id: "one-sudoku",
       name: "One Sudoku",
-      summary: "A free sudoku game for iPhone, iPad and Android, with a daily challenge and offline play.",
+      summary: "Free sudoku for iPhone, iPad and Android, with a fresh daily challenge. Works offline, so it's fine on a plane.",
       meta: [
         { label: "Platform", value: "iOS · Android" },
         { label: "Stack", value: "React Native · Expo" },
@@ -146,7 +146,7 @@ export const products = {
       id: "next-product",
       /** PLACEHOLDER: real name, screenshot and links go here when it ships. */
       name: "Next product",
-      summary: "The second YukaBuild product is in build. It lands here when it ships.",
+      summary: "App number two is being built right now. It shows up here the day it ships.",
       meta: [],
       links: [],
     },
@@ -162,25 +162,25 @@ export const products = {
 
 export const build = {
   eyebrow: "What I Build",
-  headline: "Products, not tech stacks.",
-  description: "You bring the problem and the people who have it. I bring back something they can sign up for, pay for and use.",
+  headline: "Software people will pay for.",
+  description: "Bring me the problem and the people who have it. I'll come back with something they can log into on day one.",
   items: [
     {
       id: "web",
       title: "Web Products",
-      body: "SaaS platforms, dashboards and product sites. Accounts, billing and the admin side included, built to be charged for rather than demoed.",
+      body: "SaaS platforms, dashboards and product sites. Accounts, billing and the admin panel come built in, so you can charge from launch day.",
       image: images.web,
     },
     {
       id: "mobile",
       title: "Mobile Apps",
-      body: "iOS and Android apps from one codebase, taken through store review to a live release, and kept running after launch.",
+      body: "One codebase for iOS and Android. I handle store review, get it live, and keep fixing and updating it after launch.",
       image: images.mobile,
     },
     {
       id: "engineering",
       title: "Product Engineering",
-      body: "Joining an existing product to ship features, fix what slows the team down and get a release out the door.",
+      body: "Already have a product and a team? I'll join in, ship features, clear out what's slowing everyone down and get the next release out.",
       image: images.engineering,
     },
   ],
@@ -188,31 +188,31 @@ export const build = {
 
 export const howItWorks = {
   eyebrow: "How It Works",
-  headline: "From first call to live release.",
-  description: "Four steps, no hand-offs. You see working software every week, not a status report.",
+  headline: "How a project runs.",
+  description: "Four steps, and you talk to the same person in every one. Each week ends with something you can click.",
   steps: [
     {
       id: "scope",
       title: "Scope",
-      body: "One call to understand the problem, then a written plan: what gets built first, what waits, and what it costs.",
+      body: "We get on a call about the problem. You get a written plan back: what ships first, what waits, and the price.",
       detail: "Week 1",
     },
     {
       id: "build",
       title: "Design & Build",
-      body: "Screens and code move together. Every week ends with a build you can open on your own phone or browser.",
+      body: "Design and code happen side by side. At the end of each week you get a build to open on your phone or in your browser.",
       detail: "Weekly builds",
     },
     {
       id: "launch",
       title: "Launch",
-      body: "Store review, domains, payments, analytics. The release goes out and real users get in.",
+      body: "Store review, domains, payments and analytics all get sorted. Then it goes live and real users sign up.",
       detail: "Live release",
     },
     {
       id: "run",
       title: "Run",
-      body: "Fixes, updates and the next features, from the same person who wrote the code the first time.",
+      body: "Bug fixes, updates and new features after launch, from the person who wrote the code in the first place.",
       detail: "After launch",
     },
   ],
@@ -225,11 +225,11 @@ export const stack = {
 
 export const finalCta = {
   eyebrow: "Start a Project",
-  headline: "Have something to build?",
-  subline: "Tell me what it is and who it's for. You get a straight answer on what it takes, what it costs and what to build first.",
+  headline: "What are you building?",
+  subline: "Tell me what it is and who it's for. I'll tell you straight what it takes, roughly what it costs, and where I'd start.",
   emailLabel: "Or email",
   about:
-    "YukaBuild is the studio of Yusuf Karakaya. The person you talk to on the first call is the person writing the code and shipping the release.",
+    "YukaBuild is Yusuf Karakaya's studio. The person on your first call is the one writing the code and shipping the release.",
 } as const;
 
 /**
@@ -239,7 +239,7 @@ export const finalCta = {
 export const projectForm = {
   eyebrow: "Start a Project",
   title: "Tell me what you're building.",
-  description: "A few lines is enough. I read every message myself and reply with a straight answer on what it takes.",
+  description: "A few lines is plenty. I read every message myself and reply with an honest read on what it'll take.",
   fields: {
     name: { label: "Name", placeholder: "Your name" },
     email: { label: "Email", placeholder: "you@company.com" },
@@ -270,7 +270,7 @@ export const projectForm = {
 
 /** PLACEHOLDER hrefs. The accounts do not exist yet. */
 export const footer = {
-  tagline: "Software products, from idea to production.",
+  tagline: "Apps built and shipped by one developer.",
   photoCredit: "Photos: Unsplash",
 } as const;
 
