@@ -5,7 +5,6 @@ import { SelectedProducts } from "@/components/SelectedProducts";
 import { Services } from "@/components/Services";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNav } from "@/components/SiteNav";
-import { Stack } from "@/components/Stack";
 
 export default function HomePage() {
   return (
@@ -16,7 +15,6 @@ export default function HomePage() {
         <SelectedProducts />
         <Services />
         <Process />
-        <Stack />
         <FinalCta />
       </main>
       <SiteFooter />

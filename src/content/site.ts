@@ -218,11 +218,6 @@ export const howItWorks = {
   ],
 } as const;
 
-export const stack = {
-  label: "Capabilities",
-  items: ["React", "Next.js", "React Native", "Node.js", "TypeScript", "PostgreSQL", "Firebase", "Cloudflare"],
-} as const;
-
 export const finalCta = {
   eyebrow: "Start a Project",
   headline: "What are you building?",
@@ -268,7 +263,6 @@ export const projectForm = {
   },
 } as const;
 
-/** PLACEHOLDER hrefs. The accounts do not exist yet. */
 export const footer = {
   tagline: "Apps built and shipped by one developer.",
   photoCredit: "Photos: Unsplash",
@@ -276,8 +270,6 @@ export const footer = {
 
 export const social = {
   links: [
-    { label: "X", href: "#" },
-    { label: "GitHub", href: "#" },
-    { label: "LinkedIn", href: "#" },
+    { label: "Instagram", href: "https://www.instagram.com/yukabuild/" },
   ],
 } as const;

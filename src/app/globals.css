@@ -155,7 +155,6 @@
    .rise    load-in for the hero, staggered through --rise-step.
    .reveal  scroll entry for section content.
    .scroll-veil  the soft fade under the top edge once the page scrolls.
-   .marquee the stack row.
    --------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
@@ -176,14 +175,6 @@
     animation: rise-in 0.7s var(--ease-out) both;
     animation-delay: calc(var(--rise-step, 0) * 80ms);
   }
-
-  .marquee-track {
-    animation: marquee 40s linear infinite;
-  }
-
-  .marquee:hover .marquee-track {
-    animation-play-state: paused;
-  }
 }
 
 /* Sits under the nav (same height, one layer down), so it only shows once the
@@ -197,19 +188,6 @@
   background: linear-gradient(to bottom, color-mix(in srgb, white 92%, transparent), transparent);
   backdrop-filter: blur(6px);
   mask-image: linear-gradient(to bottom, black 35%, transparent);
-}
-
-/* Without motion the stack is a static, wrapping row. */
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-  }
-
-  .marquee-track [aria-hidden="true"] {
-    display: none;
-  }
 }
 
 @keyframes rise-in {
@@ -226,11 +204,5 @@
 @keyframes veil-in {
   from {
     opacity: 0;
-  }
-}
-
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
   }
 }

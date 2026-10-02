@@ -36,7 +36,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    // Light only. Geist Sans carries the page, Geist Mono the eyebrows and the stack row,
+    // Light only. Geist Sans carries the page, Geist Mono the eyebrows,
     // Fraunces the logo.
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} ${logoFont.variable}`}>
       <body>{children}</body>
