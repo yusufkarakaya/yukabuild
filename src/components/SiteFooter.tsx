@@ -60,7 +60,7 @@ export function SiteFooter() {
             })}
           </ul>
           <p>
-            © {year} {site.name} · {footer.photoCredit}
+            © {year} {site.name}
           </p>
         </div>
       </Container>

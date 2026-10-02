@@ -265,7 +265,6 @@ export const projectForm = {
 
 export const footer = {
   tagline: "Apps built and shipped by one developer.",
-  photoCredit: "Photos: Unsplash",
 } as const;
 
 export const social = {
