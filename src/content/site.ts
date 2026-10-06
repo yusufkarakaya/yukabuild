@@ -14,7 +14,7 @@ export const site = {
   email: "hello@yukabuild.com",
   title: "Web apps, mobile apps and SaaS, built and shipped by one developer",
   description:
-    "YukaBuild is Yusuf Karakaya's one-person studio. I build web apps, mobile apps and SaaS products, ship them, and keep them running after launch.",
+    "YukaBuild is Yusuf Karakaya's one-person studio. I build web apps, mobile apps, SaaS products and WordPress and Shopify sites, ship them, then keep them running and help them get found.",
 } as const;
 
 /**
@@ -22,9 +22,8 @@ export const site = {
  * different labels for the same action reads as two different actions.
  */
 export const cta = {
-  viewWork: "View Work",
-  startProject: "Start a Project",
-  letsBuild: "Let's Build",
+  viewWork: "View work",
+  startProject: "Start a project",
 } as const;
 
 export const nav = {
@@ -39,54 +38,16 @@ export const nav = {
 } as const;
 
 export const hero = {
-  status: "Taking on new projects",
-  /** The headline is split so the middle phrase can carry the blue accent. */
-  headline: { lead: "I build apps and get them", accent: "into people's hands." },
+  eyebrow: "Independent web and mobile studio",
+  /** The headline is split so the closing phrase can carry the blue underline. */
+  headline: { lead: "I build apps and get them into", accent: "people's hands." },
   subline:
-    "Web apps, iOS and Android apps, SaaS. I design them, write the code, push them through launch and stay on after. You deal with one person the whole way, from the first call to the day it goes live.",
-  facts: ["Web · iOS · Android", "A new build to click every week", "The code is yours"],
-  /** The small floating cards on the hero photo. */
-  cards: {
-    build: { label: "Build #42", value: "Deployed to production" },
-    platforms: { label: "Shipping to", items: ["Web", "iOS", "Android"] },
-  },
-} as const;
-
-/**
- * Photos from Unsplash (unsplash.com/license: free for commercial use, no
- * attribution required). Downloaded into public/images, not hotlinked.
- */
-export const images = {
-  hero: {
-    src: "/images/hero-desk.webp",
-    width: 1400,
-    height: 1750,
-    alt: "A laptop showing code on a bright white desk, a monitor behind it.",
-  },
-  web: {
-    src: "/images/web-dashboard.webp",
-    width: 900,
-    height: 675,
-    alt: "An analytics dashboard with charts on a laptop screen.",
-  },
-  mobile: {
-    src: "/images/mobile-phone.webp",
-    width: 900,
-    height: 675,
-    alt: "A smartphone lying next to a laptop on a white desk.",
-  },
-  engineering: {
-    src: "/images/product-wireframes.webp",
-    width: 900,
-    height: 675,
-    alt: "A hand arranging app wireframes pinned to a wall.",
-  },
-  contact: {
-    src: "/images/contact-typing.webp",
-    width: 1200,
-    height: 1500,
-    alt: "Hands typing on a laptop keyboard.",
-  },
+    "Web apps, iOS and Android apps, SaaS products, and WordPress and Shopify sites. You work with one person from the first call through launch, and after it.",
+  facts: [
+    { id: "platforms", label: "Web, iOS and Android" },
+    { id: "builds", label: "A new build to click every week" },
+    { id: "ownership", label: "The code is yours" },
+  ],
 } as const;
 
 /** Real URLs from the shipped project. Do not invent replacements for these. */
@@ -96,149 +57,152 @@ export const oneSudoku = {
   playStore: "https://play.google.com/store/apps/details?id=co.onesudoku.game",
 } as const;
 
-export type Product = {
-  id: string;
-  name: string;
-  summary: string;
-  meta: readonly { label: string; value: string }[];
-  logo?: { src: string; alt: string };
-  /** A phone screenshot, shown inside a plain device frame. */
-  media?: { src: string; width: number; height: number; alt: string };
-  links: readonly { label: string; href: string }[];
-};
-
 export const products = {
-  eyebrow: "Selected Products",
-  headline: "Apps I've shipped myself.",
-  description:
-    "I design, build, release and run my own apps too. Your project goes through the same process that got One Sudoku into the App Store and Google Play.",
-  inBuild: "In build",
-  /** The invitation under the list: the next row could be the visitor's product. */
-  cta: {
-    headline: "Got an idea that won't leave you alone?",
-    subline: "Send me a few lines about it. The next app on this list could be yours.",
+  eyebrow: "Products",
+  headline: "Apps I ship myself",
+  live: {
+    id: "one-sudoku",
+    status: "Live",
+    /** PLACEHOLDER: confirm the launch year. */
+    meta: "iOS · Android · 2026",
+    name: "One Sudoku",
+    summary: "A free sudoku game for iPhone, iPad and Android. A new daily challenge, and every puzzle works offline.",
+    stack: ["React Native", "Expo"],
+    /** A phone screenshot, shown inside a plain device frame. */
+    media: {
+      src: "/one-sudoku-home.webp",
+      width: 720,
+      height: 1516,
+      alt: "The One Sudoku home screen on a phone.",
+    },
+    links: [
+      { label: "App Store", href: oneSudoku.appStore },
+      { label: "Google Play", href: oneSudoku.playStore },
+      { label: "Website", href: oneSudoku.site },
+    ],
   },
-  items: [
-    {
-      id: "one-sudoku",
-      name: "One Sudoku",
-      summary: "Free sudoku for iPhone, iPad and Android, with a fresh daily challenge. Works offline, so it's fine on a plane.",
-      meta: [
-        { label: "Platform", value: "iOS · Android" },
-        { label: "Stack", value: "React Native · Expo" },
-        /** PLACEHOLDER: confirm the launch year. */
-        { label: "Year", value: "2026" },
-      ],
-      logo: { src: "/one-sudoku-logo.png", alt: "One Sudoku app icon" },
-      media: {
-        src: "/one-sudoku-home.webp",
-        width: 720,
-        height: 1516,
-        alt: "The One Sudoku home screen on a phone.",
-      },
-      links: [
-        { label: "App Store", href: oneSudoku.appStore },
-        { label: "Google Play", href: oneSudoku.playStore },
-        { label: "Website", href: oneSudoku.site },
-      ],
-    },
-    {
-      id: "next-product",
-      /** PLACEHOLDER: real name, screenshot and links go here when it ships. */
-      name: "Next product",
-      summary: "App number two is being built right now. It shows up here the day it ships.",
-      meta: [],
-      links: [],
-    },
-  ],
-} as const satisfies {
-  eyebrow: string;
-  headline: string;
-  description: string;
-  inBuild: string;
-  cta: { headline: string; subline: string };
-  items: readonly Product[];
-};
+  /** PLACEHOLDER: becomes a second `live` card when the app ships. */
+  inProgress: {
+    eyebrow: "In progress",
+    headline: "App number two is being built right now.",
+    aside: "It shows up here the day it ships.",
+  },
+} as const;
 
+/**
+ * Two halves of the same job: getting something built, then keeping it
+ * running and finding it an audience.
+ */
 export const build = {
-  eyebrow: "What I Build",
-  headline: "Software people will pay for.",
-  description: "Bring me the problem and the people who have it. I'll come back with something they can log into on day one.",
-  items: [
+  eyebrow: "Services",
+  headline: "What I build",
+  description: "Six kinds of work in two halves. Each one starts with a written plan and ends with code you own.",
+  groups: [
     {
-      id: "web",
-      title: "Web Products",
-      body: "SaaS platforms, dashboards and product sites. Accounts, billing and the admin panel come built in, so you can charge from launch day.",
-      image: images.web,
+      id: "build",
+      label: "Build",
+      summary: "Something new, from the first sketch to launch day.",
+      items: [
+        {
+          id: "web",
+          title: "Web products",
+          body: "SaaS platforms, dashboards and product sites. Accounts, billing and an admin panel come built in, not bolted on later.",
+        },
+        {
+          id: "mobile",
+          title: "Mobile apps",
+          body: "One codebase for iOS and Android. I handle store review, the launch, and the updates that keep it running.",
+        },
+        {
+          id: "cms",
+          title: "WordPress and Shopify",
+          body: "Sites and stores your team can edit without calling me. Custom themes, catalogs, checkout and only the plugins you need.",
+        },
+      ],
     },
     {
-      id: "mobile",
-      title: "Mobile Apps",
-      body: "One codebase for iOS and Android. I handle store review, get it live, and keep fixing and updating it after launch.",
-      image: images.mobile,
-    },
-    {
-      id: "engineering",
-      title: "Product Engineering",
-      body: "Already have a product and a team? I'll join in, ship features, clear out what's slowing everyone down and get the next release out.",
-      image: images.engineering,
+      id: "grow",
+      label: "Run and grow",
+      summary: "Something already live that needs to keep working and get found.",
+      items: [
+        {
+          id: "engineering",
+          title: "Product engineering",
+          body: "For teams that already have a product. I ship features, fix performance and run releases alongside your people.",
+        },
+        {
+          id: "maintenance",
+          title: "Maintenance",
+          body: "Updates, backups, uptime checks and security patches every month. When something breaks, the person who knows the code fixes it.",
+        },
+        {
+          id: "seo",
+          title: "SEO and marketing",
+          body: "Technical SEO, page speed, analytics and landing pages. I fix what keeps you off page one and show you what's working.",
+        },
+      ],
     },
   ],
 } as const;
 
 export const howItWorks = {
-  eyebrow: "How It Works",
-  headline: "How a project runs.",
-  description: "Four steps, and you talk to the same person in every one. Each week ends with something you can click.",
+  eyebrow: "Process",
+  headline: "How it works",
   steps: [
     {
       id: "scope",
       title: "Scope",
-      body: "We get on a call about the problem. You get a written plan back: what ships first, what waits, and the price.",
+      body: "We talk it through. You get a written plan with priorities and a price.",
       detail: "Week 1",
     },
     {
       id: "build",
-      title: "Design & Build",
-      body: "Design and code happen side by side. At the end of each week you get a build to open on your phone or in your browser.",
+      title: "Design and build",
+      body: "Design and code move together. Every week there is a new build you can click.",
       detail: "Weekly builds",
     },
     {
       id: "launch",
       title: "Launch",
-      body: "Store review, domains, payments and analytics all get sorted. Then it goes live and real users sign up.",
+      body: "Store review, domain, payments and analytics. I set them up and see them through.",
       detail: "Live release",
     },
     {
       id: "run",
       title: "Run",
-      body: "Bug fixes, updates and new features after launch, from the person who wrote the code in the first place.",
+      body: "Maintenance, SEO and new features. The same person who built it keeps it running and helps it get found.",
       detail: "After launch",
     },
   ],
 } as const;
 
-export const finalCta = {
-  eyebrow: "Start a Project",
-  headline: "What are you building?",
-  subline: "Tell me what it is and who it's for. I'll tell you straight what it takes, roughly what it costs, and where I'd start.",
-  emailLabel: "Or email",
-  about:
-    "YukaBuild is Yusuf Karakaya's studio. The person on your first call is the one writing the code and shipping the release.",
+export const about = {
+  eyebrow: "About",
+  headline: "One engineer, start to finish",
+  lead: "I'm Yusuf, a full-stack engineer in Temecula, California. I've built for the web since 2019.",
+  body: "Before YukaBuild I built client sites and products for agencies in New York and San Diego. Now I take projects from the first sketch to the deploy that keeps them running, and I ship my own apps on the side. When you hire me, you talk to the person writing the code.",
+  stack: ["React", "Next.js", "Nuxt", "React Native", "WordPress", "Shopify", "PHP"],
+} as const;
+
+export const contact = {
+  eyebrow: "Contact",
+  headline: "Have something to build?",
+  subline: "Send a few lines about the idea. I reply with questions, then a written plan.",
+  instagram: { label: "@yukabuild on Instagram", href: "https://www.instagram.com/yukabuild/" },
 } as const;
 
 /**
- * The dialog behind every "Start a Project" button. Submissions go to
+ * The dialog behind every "Start a project" button. Submissions go to
  * FormSubmit, which forwards them to `site.email`.
  */
 export const projectForm = {
-  eyebrow: "Start a Project",
+  eyebrow: "Start a project",
   title: "Tell me what you're building.",
   description: "A few lines is plenty. I read every message myself and reply with an honest read on what it'll take.",
   fields: {
     name: { label: "Name", placeholder: "Your name" },
     email: { label: "Email", placeholder: "you@company.com" },
-    kind: { label: "What is it?", options: ["Web app", "Mobile app", "SaaS", "Something else"] },
+    kind: { label: "What is it?", options: ["Web app", "Mobile app", "SaaS", "WordPress or Shopify", "Maintenance", "SEO and marketing", "Something else"] },
     /** PLACEHOLDER: confirm the ranges match what you quote. */
     budget: { label: "Budget", options: ["Under $5k", "$5k–15k", "$15k–40k", "$40k+", "Not sure yet"] },
     message: {
@@ -264,11 +228,6 @@ export const projectForm = {
 } as const;
 
 export const footer = {
-  tagline: "Apps built and shipped by one developer.",
-} as const;
-
-export const social = {
-  links: [
-    { label: "Instagram", href: "https://www.instagram.com/yukabuild/" },
-  ],
+  location: "Temecula, CA",
+  links: [...nav.links, { label: "Email", href: `mailto:${site.email}` }],
 } as const;

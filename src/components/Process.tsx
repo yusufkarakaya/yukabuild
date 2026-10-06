@@ -5,38 +5,23 @@ import { howItWorks } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 /**
- * The four steps as one connected line: blue numbered nodes on a blue rule,
- * the last node orange because that is where the product is live. The rule
- * runs across on desktop and down the left edge on mobile.
+ * The four steps on the raised band. Each sits under a rule; the first rule is
+ * blue because that is where every project starts.
  */
 export function Process() {
-  const last = howItWorks.steps.length - 1;
-
   return (
-    <section id="process" className="border-y border-border py-28 lg:py-40">
-      <Container className="flex flex-col gap-16">
+    <section id="process" className="bg-card py-24">
+      <Container className="flex flex-col gap-8">
         <Reveal>
-          <SectionHeading eyebrow={howItWorks.eyebrow} title={howItWorks.headline} description={howItWorks.description} />
+          <SectionHeading eyebrow={howItWorks.eyebrow} title={howItWorks.headline} />
         </Reveal>
-        <ol className="relative grid grid-cols-1 gap-10 md:grid-cols-4 md:gap-8">
-          {/* The connecting rule. */}
-          <span aria-hidden className="absolute top-6 bottom-6 left-6 w-px bg-blue/30 md:right-[calc((100%-6rem)/4-1.5rem)] md:bottom-auto md:h-px md:w-auto" />
+        <ol className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 md:gap-4">
           {howItWorks.steps.map((step, index) => (
-            <li key={step.id} className="relative flex gap-6 md:flex-col">
-              <span
-                className={cn(
-                  "relative grid size-12 shrink-0 place-items-center rounded-full border-2 bg-background font-mono text-sm font-semibold",
-                  index === last ? "border-primary text-primary" : "border-blue text-blue",
-                )}
-              >
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <Reveal className="flex flex-col gap-3">
-                <p className={cn("font-mono text-[13px] tracking-widest uppercase", index === last ? "text-primary" : "text-blue")}>
-                  {step.detail}
-                </p>
-                <h3 className="text-2xl font-semibold tracking-[-0.03em]">{step.title}</h3>
-                <p className="leading-relaxed text-muted-foreground">{step.body}</p>
+            <li key={step.id}>
+              <Reveal className={cn("flex flex-col gap-2 border-t-2 pt-3", index === 0 ? "border-blue" : "border-input")}>
+                <p className="font-mono text-xs text-muted-foreground">{step.detail}</p>
+                <h3 className="font-heading text-2xl font-semibold tracking-[-0.02em]">{step.title}</h3>
+                <p className="text-sm leading-relaxed">{step.body}</p>
               </Reveal>
             </li>
           ))}

@@ -8,9 +8,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-[0_8px_24px_-8px_color-mix(in_srgb,var(--primary)_40%,transparent)] hover:bg-[color-mix(in_srgb,var(--primary),black_8%)] hover:shadow-[0_12px_28px_-8px_color-mix(in_srgb,var(--primary)_50%,transparent)]",
+          "bg-primary text-primary-foreground hover:bg-[color-mix(in_srgb,var(--primary),white_10%)]",
         outline:
-          "border-foreground/15 bg-background text-foreground hover:border-foreground/40 aria-expanded:border-foreground/40",
+          "border-foreground/30 bg-background text-foreground hover:border-foreground/60 aria-expanded:border-foreground/60",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
         ghost:
@@ -31,7 +31,7 @@ const buttonVariants = cva(
         "icon-sm":
           "size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-lg",
         "icon-lg": "size-9",
-        cta: "h-12 gap-2 px-6 text-[15px]",
+        cta: "h-11 gap-2 px-5 text-[15px] font-semibold",
       },
     },
     defaultVariants: {

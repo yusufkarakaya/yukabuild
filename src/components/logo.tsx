@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
 
 /**
- * The yukabuild wordmark, set in Fraunces bold: "yuka" and the closing period
- * are orange, "build" takes the navy foreground.
+ * The yukabuild wordmark, set in Fraunces bold: "yuka" is blue, "build" takes
+ * the off-white foreground, and the closing period is mint.
  */
 export function Logo({ className }: { className?: string }) {
   return (
@@ -10,9 +10,9 @@ export function Logo({ className }: { className?: string }) {
       aria-label="yukabuild"
       className={cn("font-logo text-xl font-bold tracking-tight text-foreground", className)}
     >
-      <span aria-hidden className="text-primary">yuka</span>
+      <span aria-hidden className="text-blue">yuka</span>
       <span aria-hidden>build</span>
-      <span aria-hidden className="text-primary">.</span>
+      <span aria-hidden className="text-mint">.</span>
     </span>
   );
 }

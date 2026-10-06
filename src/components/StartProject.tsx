@@ -1,12 +1,14 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import type { VariantProps } from "class-variance-authority";
 import { ArrowRightIcon, CheckIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { Button, type buttonVariants } from "@/components/ui/button";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Field, FieldError, FieldGroup, FieldLabel, FieldLegend, FieldSet } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { Eyebrow } from "@/components/section-heading";
 import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
@@ -71,10 +73,16 @@ function Choices({
 }
 
 /**
- * The "Start a Project" button and the brief it opens. The draft lives here,
+ * The "Start a project" button and the brief it opens. The draft lives here,
  * outside the dialog, so closing the dialog by accident does not lose it.
  */
-export function StartProject({ className }: { className?: string }) {
+export function StartProject({
+  className,
+  size = "cta",
+}: {
+  className?: string;
+  size?: VariantProps<typeof buttonVariants>["size"];
+}) {
   const [draft, setDraft] = useState<Draft>(emptyDraft);
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<Status>("idle");
@@ -130,10 +138,7 @@ export function StartProject({ className }: { className?: string }) {
         if (!open && status === "sent") setStatus("idle");
       }}
     >
-      <DialogTrigger render={<Button size="cta" className={className} />}>
-        {cta.startProject}
-        <ArrowRightIcon data-icon="inline-end" />
-      </DialogTrigger>
+      <DialogTrigger render={<Button size={size} className={className} />}>{cta.startProject}</DialogTrigger>
       <DialogContent className="max-h-[calc(100dvh-2rem)] gap-0 overflow-y-auto rounded-2xl p-0 sm:max-w-xl">
         {status === "sent" ? (
           <div className="flex flex-col items-start gap-6 p-8 sm:p-10">
@@ -141,7 +146,7 @@ export function StartProject({ className }: { className?: string }) {
               <CheckIcon aria-hidden className="size-6" />
             </span>
             <DialogHeader className="gap-3">
-              <DialogTitle className="text-3xl font-semibold tracking-[-0.03em]">{projectForm.success.title}</DialogTitle>
+              <DialogTitle className="font-heading text-3xl font-semibold tracking-[-0.02em]">{projectForm.success.title}</DialogTitle>
               <DialogDescription className="text-base leading-relaxed">{projectForm.success.body}</DialogDescription>
             </DialogHeader>
             <DialogClose render={<Button variant="outline" size="cta" />}>{projectForm.success.close}</DialogClose>
@@ -149,11 +154,8 @@ export function StartProject({ className }: { className?: string }) {
         ) : (
           <>
             <DialogHeader className="gap-3 border-b border-border p-8 pb-6 sm:p-10 sm:pb-8">
-              <p className="flex items-center gap-3 font-mono text-[13px] tracking-widest text-blue uppercase">
-                <span aria-hidden className="h-px w-6 bg-current" />
-                {projectForm.eyebrow}
-              </p>
-              <DialogTitle className="text-3xl leading-tight font-semibold tracking-[-0.03em] text-balance">
+              <Eyebrow>{projectForm.eyebrow}</Eyebrow>
+              <DialogTitle className="font-heading text-3xl leading-tight font-semibold tracking-[-0.02em] text-balance">
                 {projectForm.title}
               </DialogTitle>
               <DialogDescription className="text-base leading-relaxed">{projectForm.description}</DialogDescription>

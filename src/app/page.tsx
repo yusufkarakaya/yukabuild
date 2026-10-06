@@ -1,4 +1,5 @@
-import { FinalCta } from "@/components/FinalCta";
+import { About } from "@/components/About";
+import { Contact } from "@/components/Contact";
 import { Hero } from "@/components/Hero";
 import { Process } from "@/components/Process";
 import { SelectedProducts } from "@/components/SelectedProducts";
@@ -15,7 +16,8 @@ export default function HomePage() {
         <SelectedProducts />
         <Services />
         <Process />
-        <FinalCta />
+        <About />
+        <Contact />
       </main>
       <SiteFooter />
     </>

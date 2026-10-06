@@ -1,8 +1,13 @@
 import { cn } from "@/lib/utils";
 
+/** The small uppercase label above every section headline. */
+export function Eyebrow({ children, className }: { children: React.ReactNode; className?: string }) {
+  return <p className={cn("text-[11px] font-semibold tracking-[0.12em] text-muted-foreground uppercase", className)}>{children}</p>;
+}
+
 /**
- * The one heading every section uses: a small mono eyebrow, an oversized
- * headline, then an optional description.
+ * The one heading every section uses: a small eyebrow, a serif headline, then
+ * an optional description.
  */
 export function SectionHeading({
   eyebrow,
@@ -16,13 +21,10 @@ export function SectionHeading({
   className?: string;
 }) {
   return (
-    <div className={cn("flex flex-col gap-6", className)}>
-      <p className="flex items-center gap-3 font-mono text-[13px] tracking-widest text-blue uppercase">
-        <span aria-hidden className="h-px w-8 bg-blue" />
-        {eyebrow}
-      </p>
-      <h2 className="max-w-[16ch] text-5xl leading-[0.95] font-semibold tracking-[-0.035em] text-balance lg:text-7xl">{title}</h2>
-      {description ? <p className="max-w-[56ch] text-lg leading-relaxed text-muted-foreground">{description}</p> : null}
+    <div className={cn("flex flex-col gap-3", className)}>
+      <Eyebrow>{eyebrow}</Eyebrow>
+      <h2 className="font-heading text-4xl leading-tight font-semibold tracking-[-0.02em] text-balance lg:text-[42px]">{title}</h2>
+      {description ? <p className="max-w-[46ch] text-lg leading-relaxed text-foreground/90">{description}</p> : null}
     </div>
   );
 }

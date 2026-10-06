@@ -5,8 +5,9 @@ import { Fraunces } from "next/font/google";
 import { site } from "@/content/site";
 import "./globals.css";
 
-// The serif behind the yukabuild wordmark. Used by the logo and nothing else.
-const logoFont = Fraunces({ subsets: ["latin"], weight: "700", variable: "--font-fraunces" });
+// The serif for headings and the YukaBuild wordmark. Loaded as the variable
+// font so headings can sit at 600 and the wordmark at 700.
+const headingFont = Fraunces({ subsets: ["latin"], variable: "--font-fraunces" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -31,14 +32,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#ffffff",
+  themeColor: "#101828",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    // Light only. Geist Sans carries the page, Geist Mono the eyebrows,
-    // Fraunces the logo.
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} ${logoFont.variable}`}>
+    // Dark only, so the `dark` class is always on. Geist Sans carries the page,
+    // Geist Mono the labels and chips, Fraunces the headings and the logo.
+    <html lang="en" className={`dark ${GeistSans.variable} ${GeistMono.variable} ${headingFont.variable}`}>
       <body>{children}</body>
     </html>
   );

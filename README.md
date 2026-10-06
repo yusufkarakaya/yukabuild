@@ -20,15 +20,12 @@ site. The design tokens are in **`src/app/globals.css`**.
 
 | Where | What to replace |
 |---|---|
-| `src/content/site.ts` → `site.url` | The real domain. Nothing is registered yet. |
-| `src/content/site.ts` → `site.email` | A real studio inbox. |
-| `src/content/site.ts` → `social.links` | Every `href` is `"#"` until the accounts exist. |
-| `src/content/site.ts` → `work.projects[1]` | The second product: real name, screenshots, store links. |
-| `src/content/site.ts` → `about.media` | A real photo of you or the workspace. |
+| `src/content/site.ts` → `products.live.meta` | Confirm the One Sudoku launch year. |
+| `src/content/site.ts` → `products.inProgress` | Becomes a second product card when app two ships. |
 
-One image is a seeded `picsum.photos` placeholder (`yukabuild-founder-desk`). The One Sudoku screenshot, logo and store links are real.
+The One Sudoku screenshot and store links are real.
 
-The "Start a Project" form posts to [FormSubmit](https://formsubmit.co) at
+The "Start a project" form posts to [FormSubmit](https://formsubmit.co) at
 `site.email`; there is no account or key. The first submission sends that inbox
 an activation email, and until it is confirmed the form shows its error state
 with the email address rather than looking like it sent. Changing `site.email`
@@ -46,23 +43,20 @@ lucide icons). Components live in `src/components/ui/` and are added with
 `pnpm dlx shadcn@latest add <name>`. Do not hand-edit them for one-off styling.
 
 - **Semantic tokens only.** `bg-background`, `text-muted-foreground`, `bg-primary`
-  and friends, defined once in `globals.css` on `:root`, plus `navy` and `blue`.
-- **Four colours, no more.** White ground, navy type, blue for signals (eyebrows,
-  diagrams, icons, links, focus) and orange (`--primary`) for calls to action and
-  the logo cursor. Muted text and borders are navy at low opacity, never a new hue.
-- **Light only.** White background from top to bottom; the closing card is the
-  one navy block. Photos are from Unsplash, stored in `public/images`.
+  and friends, defined once in `globals.css` on `:root`, plus `navy`, `blue` and `mint`.
+- **Four colours, no more.** Dark navy `#101828` ground, off-white `#F9FAFB` type,
+  electric blue `#2970FF` (`--primary`) for actions, links, icons and focus, and
+  mint `#12B76A` for the "Live" status and the logo's period. Raised surfaces,
+  muted text and borders are off-white mixed into navy, never a new hue. The
+  form's error red is the only exception.
+- **Dark only.** `<html>` always carries the `dark` class. No photos.
 - **Base UI composition.** Links styled as buttons use
   `<Button render={<a href="..." />} nativeButton={false}>`, not `asChild`.
-- **Two typefaces, one family.** Geist Sans for the page, Geist Mono for labels,
-  numbers, chips and the terminal. Both from the `geist` package.
-- **The mark.** A two-stroke `y` in crop brackets, followed by a block cursor
-  (`src/components/logo.tsx`, `src/app/icon.svg`). The brackets reappear as
-  `CornerMarks` on every `Panel` (`src/components/panel.tsx`).
-- **Brand-board sections.** Each section opens with a mono index and label
-  (`sections` in `site.ts`). `bg-grid` is the construction grid behind the hero
-  and contact, `scaffold` hatches anything still in build, and a faint grain
-  sits over the whole page.
+- **Three typefaces.** Fraunces for headings and the wordmark, Geist Sans for
+  the page, Geist Mono for labels, numbers and chips.
+- **The mark.** The `yukabuild.` wordmark in Fraunces bold: "yuka" blue, "build"
+  off-white, the period mint (`src/components/logo.tsx`). The favicon is the same
+  `y.` on navy (`src/app/icon.svg`).
 - **No em-dashes.** Anywhere. Use a hyphen, a comma or two sentences.
-- **Motion is CSS only.** `.rise`, `.reveal` and `.cursor` in `globals.css`, all
+- **Motion is CSS only.** `.rise`, `.reveal` and `.scroll-veil` in `globals.css`, all
   gated behind `prefers-reduced-motion: no-preference`.

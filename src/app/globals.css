@@ -7,56 +7,58 @@
 /* ---------------------------------------------------------------------------
    Four colours, decided once, and nothing else:
 
-     white   #ffffff  every background
-     navy    #0b1f3a  type, the one dark block (the closing card)
-     blue    #2f6bff  signals: eyebrows, diagrams, icons, links, focus
-     orange  #e15d2d  calls to action only, plus the logo's "yuka" and period
+     navy       #101828  every background
+     off-white  #f9fafb  type
+     blue       #2970ff  actions, links, icons, focus
+     mint       #12b76a  the "Live" status and the logo's period
 
-   Muted text, borders and pale surfaces are navy or blue at low opacity,
-   never a fifth hue. The site is light only.
+   Raised surfaces, muted text and borders are off-white mixed into navy at a
+   low share, never a fifth hue. The one exception is the error red on the
+   project form. The site is dark only.
    --------------------------------------------------------------------------- */
 :root {
-  --navy: #0b1f3a;
-  --brand-blue: #2f6bff;
-  --orange: #e15d2d;
+  --navy: #101828;
+  --brand-blue: #2970ff;
+  --mint: #12b76a;
+  --off-white: #f9fafb;
 
-  --background: #ffffff;
-  --foreground: var(--navy);
-  --card: #ffffff;
-  --card-foreground: var(--navy);
-  --popover: #ffffff;
-  --popover-foreground: var(--navy);
-  --primary: var(--orange);
-  --primary-foreground: #ffffff;
-  --secondary: color-mix(in srgb, var(--navy) 4%, white);
-  --secondary-foreground: var(--navy);
-  --muted: color-mix(in srgb, var(--navy) 4%, white);
-  --muted-foreground: color-mix(in srgb, var(--navy) 64%, white);
-  --accent: color-mix(in srgb, var(--brand-blue) 8%, white);
-  --accent-foreground: var(--navy);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: color-mix(in srgb, var(--navy) 10%, white);
-  --input: color-mix(in srgb, var(--navy) 14%, white);
+  --background: var(--navy);
+  --foreground: var(--off-white);
+  --card: color-mix(in srgb, var(--off-white) 6%, var(--navy));
+  --card-foreground: var(--off-white);
+  --popover: color-mix(in srgb, var(--off-white) 6%, var(--navy));
+  --popover-foreground: var(--off-white);
+  --primary: var(--brand-blue);
+  --primary-foreground: var(--off-white);
+  --secondary: color-mix(in srgb, var(--off-white) 6%, var(--navy));
+  --secondary-foreground: var(--off-white);
+  --muted: color-mix(in srgb, var(--off-white) 10%, var(--navy));
+  --muted-foreground: color-mix(in srgb, var(--off-white) 65%, var(--navy));
+  --accent: color-mix(in srgb, var(--brand-blue) 16%, var(--navy));
+  --accent-foreground: var(--off-white);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: color-mix(in srgb, var(--off-white) 12%, var(--navy));
+  --input: color-mix(in srgb, var(--off-white) 16%, var(--navy));
   --ring: var(--brand-blue);
   --radius: 10px;
-  --sidebar: #ffffff;
-  --sidebar-foreground: var(--navy);
-  --sidebar-primary: var(--orange);
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: color-mix(in srgb, var(--brand-blue) 8%, white);
-  --sidebar-accent-foreground: var(--navy);
-  --sidebar-border: color-mix(in srgb, var(--navy) 10%, white);
+  --sidebar: color-mix(in srgb, var(--off-white) 6%, var(--navy));
+  --sidebar-foreground: var(--off-white);
+  --sidebar-primary: var(--brand-blue);
+  --sidebar-primary-foreground: var(--off-white);
+  --sidebar-accent: color-mix(in srgb, var(--brand-blue) 16%, var(--navy));
+  --sidebar-accent-foreground: var(--off-white);
+  --sidebar-border: color-mix(in srgb, var(--off-white) 12%, var(--navy));
   --sidebar-ring: var(--brand-blue);
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 @theme inline {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--font-sans);
-  --font-logo: var(--font-fraunces), Georgia, serif;
+  --font-heading: var(--font-fraunces), Georgia, serif;
+  --font-logo: var(--font-heading);
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --color-background: var(--background);
@@ -87,6 +89,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --color-navy: var(--navy);
   --color-blue: var(--brand-blue);
+  --color-mint: var(--mint);
 
   /* Radii stay in the 8–12px band. */
   --radius-sm: 6px;
@@ -139,15 +142,6 @@
   }
 }
 
-/* A faint blue drafting grid that fades out towards the edges. Decoration only. */
-@utility blueprint-grid {
-  background-image:
-    linear-gradient(to right, color-mix(in srgb, var(--brand-blue) 9%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in srgb, var(--brand-blue) 9%, transparent) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
-}
-
 /* ---------------------------------------------------------------------------
    Motion, CSS only. Elements are visible by default and the animation is
    layered on top, so a blocked script shows the finished page.
@@ -185,7 +179,7 @@
   z-index: 30;
   height: 4rem;
   pointer-events: none;
-  background: linear-gradient(to bottom, color-mix(in srgb, white 92%, transparent), transparent);
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--navy) 92%, transparent), transparent);
   backdrop-filter: blur(6px);
   mask-image: linear-gradient(to bottom, black 35%, transparent);
 }
