@@ -1,4 +1,3 @@
-import { KeyRoundIcon, RefreshCwIcon, SmartphoneIcon, type LucideIcon } from "lucide-react";
 import { Container } from "@/components/panel";
 import { Rise } from "@/components/reveal";
 import { Eyebrow } from "@/components/section-heading";
@@ -6,13 +5,7 @@ import { StartProject } from "@/components/StartProject";
 import { Button } from "@/components/ui/button";
 import { cta, hero } from "@/content/site";
 
-const factIcons: Record<(typeof hero.facts)[number]["id"], LucideIcon> = {
-  platforms: SmartphoneIcon,
-  builds: RefreshCwIcon,
-  ownership: KeyRoundIcon,
-};
-
-/** Eyebrow, the serif headline with its underlined close, two actions, then three facts. */
+/** Eyebrow, the serif headline with its underlined close, the subline and two actions. */
 export function Hero() {
   return (
     <section id="top">
@@ -34,19 +27,6 @@ export function Hero() {
           <Button size="cta" variant="outline" render={<a href="#products" />} nativeButton={false}>
             {cta.viewWork}
           </Button>
-        </Rise>
-        <Rise step={4} className="mt-6 border-t border-border pt-5">
-          <ul className="grid grid-cols-1 gap-3 text-sm sm:grid-cols-3">
-            {hero.facts.map((fact) => {
-              const Icon = factIcons[fact.id];
-              return (
-                <li key={fact.id} className="flex items-center gap-2.5">
-                  <Icon aria-hidden className="size-4 text-blue" />
-                  {fact.label}
-                </li>
-              );
-            })}
-          </ul>
         </Rise>
       </Container>
     </section>

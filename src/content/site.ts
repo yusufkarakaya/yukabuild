@@ -43,11 +43,6 @@ export const hero = {
   headline: { lead: "I build apps and get them into", accent: "people's hands." },
   subline:
     "Web apps, iOS and Android apps, SaaS products, and WordPress and Shopify sites. You work with one person from the first call through launch, and after it.",
-  facts: [
-    { id: "platforms", label: "Web, iOS and Android" },
-    { id: "builds", label: "A new build to click every week" },
-    { id: "ownership", label: "The code is yours" },
-  ],
 } as const;
 
 /** Real URLs from the shipped project. Do not invent replacements for these. */
@@ -65,15 +60,15 @@ export const products = {
     status: "Live",
     /** PLACEHOLDER: confirm the launch year. */
     meta: "iOS · Android · 2026",
-    name: "One Sudoku",
+    name: "OneSudoku",
     summary: "A free sudoku game for iPhone, iPad and Android. A new daily challenge, and every puzzle works offline.",
-    stack: ["React Native", "Expo"],
+    stack: ["React Native", "Expo", "Firestore", "RevenueCat", "PostHog"],
     /** A phone screenshot, shown inside a plain device frame. */
     media: {
       src: "/one-sudoku-home.webp",
       width: 720,
       height: 1516,
-      alt: "The One Sudoku home screen on a phone.",
+      alt: "The OneSudoku home screen on a phone.",
     },
     links: [
       { label: "App Store", href: oneSudoku.appStore },
@@ -226,6 +221,77 @@ export const projectForm = {
     close: "Close",
   },
 } as const;
+
+type ProjectKind = (typeof projectForm.fields.kind.options)[number];
+
+/**
+ * The picker between the hero and the products. Each `kind` matches an option
+ * in the project form, so the button opens the form with it already chosen.
+ */
+export const picker = {
+  eyebrow: "Start here",
+  headline: "What are you building?",
+  description: "Pick one to see what you get and what it's built with.",
+  deliverablesLabel: "What you get",
+  stackLabel: "Stack",
+  options: [
+    {
+      kind: "Web app",
+      summary: "A product people log into, ready to charge from launch day.",
+      deliverables: ["Accounts, billing and an admin panel", "A new build to click every week", "Hosting, domain and analytics set up"],
+      stack: ["Next.js", "React", "Nuxt", "Firestore"],
+      action: "Start a web app project",
+    },
+    {
+      kind: "Mobile app",
+      summary: "One app for iPhone and Android, from the first screen to the store listing.",
+      deliverables: ["One codebase for iOS and Android", "Store review and launch handled", "A new build on your phone every week"],
+      stack: ["React Native", "Expo", "Firestore", "RevenueCat", "PostHog"],
+      action: "Start a mobile app project",
+    },
+    {
+      kind: "SaaS",
+      summary: "Subscriptions, accounts and the dashboard your customers work in.",
+      deliverables: ["Sign-up, plans and recurring billing", "An admin panel to run the business", "Product analytics from the first user"],
+      stack: ["Next.js", "React", "Firestore", "PostHog"],
+      action: "Start a SaaS project",
+    },
+    {
+      kind: "WordPress or Shopify",
+      summary: "A site or store your team can edit without calling me.",
+      deliverables: ["A custom theme, not a stock template", "Catalog, checkout and only the plugins you need", "A handover so your team can run it"],
+      stack: ["WordPress", "Shopify", "PHP"],
+      action: "Start a WordPress or Shopify project",
+    },
+    {
+      kind: "Maintenance",
+      summary: "For something already live that has to keep working.",
+      deliverables: ["Updates, backups and security patches every month", "Uptime checks, so I hear about outages first", "Fixes from the person who knows the code"],
+      stack: ["React", "Next.js", "WordPress", "Shopify"],
+      action: "Set up maintenance",
+    },
+    {
+      kind: "SEO and marketing",
+      summary: "For a site that works but doesn't get found.",
+      deliverables: ["Technical SEO and page speed fixes", "Analytics and conversion tracking set up", "Landing pages for your campaigns"],
+      stack: ["PostHog", "Next.js", "WordPress", "Shopify"],
+      action: "Start with SEO and marketing",
+    },
+  ],
+} as const satisfies {
+  eyebrow: string;
+  headline: string;
+  description: string;
+  deliverablesLabel: string;
+  stackLabel: string;
+  options: readonly {
+    kind: ProjectKind;
+    summary: string;
+    deliverables: readonly string[];
+    stack: readonly string[];
+    action: string;
+  }[];
+};
 
 export const footer = {
   location: "Temecula, CA",

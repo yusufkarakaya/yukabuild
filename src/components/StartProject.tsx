@@ -79,9 +79,14 @@ function Choices({
 export function StartProject({
   className,
   size = "cta",
+  kind,
+  label = cta.startProject,
 }: {
   className?: string;
   size?: VariantProps<typeof buttonVariants>["size"];
+  /** A project type to tick in the form when it opens, e.g. from the picker. */
+  kind?: string;
+  label?: string;
 }) {
   const [draft, setDraft] = useState<Draft>(emptyDraft);
   const [errors, setErrors] = useState<Errors>({});
@@ -133,12 +138,16 @@ export function StartProject({
 
   return (
     <Dialog
+      onOpenChange={(open) => {
+        // Add the preselected type without clearing anything already typed.
+        if (open && kind) setDraft((current) => (current.kind.includes(kind) ? current : { ...current, kind: [...current.kind, kind] }));
+      }}
       onOpenChangeComplete={(open) => {
         // Start the next visit on a fresh form once the success screen is gone.
         if (!open && status === "sent") setStatus("idle");
       }}
     >
-      <DialogTrigger render={<Button size={size} className={className} />}>{cta.startProject}</DialogTrigger>
+      <DialogTrigger render={<Button size={size} className={className} />}>{label}</DialogTrigger>
       <DialogContent className="max-h-[calc(100dvh-2rem)] gap-0 overflow-y-auto rounded-2xl p-0 sm:max-w-xl">
         {status === "sent" ? (
           <div className="flex flex-col items-start gap-6 p-8 sm:p-10">

@@ -79,7 +79,7 @@ function InProgress() {
 
 export function SelectedProducts() {
   return (
-    <section id="products" className="pt-10 pb-24">
+    <section id="products" className="py-24">
       <Container className="flex flex-col gap-6">
         <Reveal>
           <SectionHeading eyebrow={products.eyebrow} title={products.headline} />

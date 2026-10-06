@@ -20,10 +20,10 @@ site. The design tokens are in **`src/app/globals.css`**.
 
 | Where | What to replace |
 |---|---|
-| `src/content/site.ts` → `products.live.meta` | Confirm the One Sudoku launch year. |
+| `src/content/site.ts` → `products.live.meta` | Confirm the OneSudoku launch year. |
 | `src/content/site.ts` → `products.inProgress` | Becomes a second product card when app two ships. |
 
-The One Sudoku screenshot and store links are real.
+The OneSudoku screenshot and store links are real.
 
 The "Start a project" form posts to [FormSubmit](https://formsubmit.co) at
 `site.email`; there is no account or key. The first submission sends that inbox
@@ -46,7 +46,7 @@ lucide icons). Components live in `src/components/ui/` and are added with
   and friends, defined once in `globals.css` on `:root`, plus `navy`, `blue` and `mint`.
 - **Four colours, no more.** Dark navy `#101828` ground, off-white `#F9FAFB` type,
   electric blue `#2970FF` (`--primary`) for actions, links, icons and focus, and
-  mint `#12B76A` for the "Live" status and the logo's period. Raised surfaces,
+  mint `#12B76A` for the "Live" status, the picker's ticks and the logo's period. Raised surfaces,
   muted text and borders are off-white mixed into navy, never a new hue. The
   form's error red is the only exception.
 - **Dark only.** `<html>` always carries the `dark` class. No photos.
