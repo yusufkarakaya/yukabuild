@@ -1,2 +1,5 @@
+# pnpm 10 (Cloudflare's default) refuses a workspace file without packages.
+packages:
+  - "."
 allowBuilds:
   unrs-resolver: false
